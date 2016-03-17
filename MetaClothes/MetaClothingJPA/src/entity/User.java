@@ -29,7 +29,7 @@ public class User {
 	
 	@Column(name = "isemployee")
 	private boolean isEmployee;
-	
+	@OneToMany(mappedBy= "user")
 	private List<Cart> carts;
 	
 	private List<Sale> sales;
