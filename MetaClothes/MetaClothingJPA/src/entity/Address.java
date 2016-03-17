@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +22,8 @@ public class Address {
 	private String stateAbbrev;
 	@Column(name="zip")
 	private int zipcode;
+	@ManyToOne
+	@JoinColumn(name="userid")
 	private User user;
 	@Column(name="isbilling")
 	private boolean isBilling;
