@@ -166,10 +166,7 @@ function displayItems(itemList) {
             userId: num
           };
           console.log(obj);
-          verbData('POST', 'updateCart',callback, obj);
-          function callback() {
-            console.log('callback placeholder');
-          }
+          verbData('POST', 'updateCart',null , obj);
         } else {
           shoppingCart.push(e.target.id);
           console.log("In else. shoppingCart.length: " + shoppingCart.length);
