@@ -9,9 +9,10 @@ function getSessionId() {
 
 function getUser(data) {
   console.log(data);
-  var url = 'http://localhost:8080/MetaClothingJava/rest/userId/' + data;
-  console.log(url);
-  getData(url, editAddress);
+  var obj = {id: data};
+  console.log(obj);
+  // var url = 'http://localhost:8080/MetaClothingJava/rest/userId/' + data;
+  verbData('POST', 'getUserId', editAddress, obj);
 };
 
 function editAddress(user) {
@@ -192,7 +193,8 @@ function editAddress(user) {
     user.addresses = [address0];
     console.log(user.addresses[0]);
   }
-    verbData('POST','http://localhost:8080/MetaClothingJava/rest/address', displayUser, user);
+  
+    verbData('POST','editUserAddress', displayUser, user);
   });
 };
 

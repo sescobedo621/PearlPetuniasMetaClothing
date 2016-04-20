@@ -26,9 +26,9 @@ function verbData(method, url, callback, obj, validation) {
   var xhr = new XMLHttpRequest();
 
   xhr.open(method, url);
-
   if (obj) {
     xhr.setRequestHeader('Content-Type', 'application/json');
+
     // xhr.setRequestHeader('Accept', 'application/json');
   }
   xhr.onreadystatechange = function() {

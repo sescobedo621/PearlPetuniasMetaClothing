@@ -9,8 +9,10 @@ onload = function() {
         password: document.loginForm.password.value
       };
       console.log(obj);
-      var url = 'http://localhost:8080/MetaClothingJava/rest/user/' + obj.email + '/' + obj.password;
-      getData(url, createSession, loginValidation);
+      // var url = 'http://localhost:8080/MetaClothingJava/rest/user/' + obj.email + '/' + obj.password;
+      // getData(url, createSession, loginValidation);
+
+      verbData('POST', 'getLogin', createSession, obj, loginValidation);
 
       getCookie();
       //this method call was returning null on users first attempt at logging in:

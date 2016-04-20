@@ -8,8 +8,10 @@ function getSessionId() {
 
 function getCart(num) {
   console.log(num);
-  var url = 'http://localhost:8080/MetaClothingJava/rest/cart/' + num;
-  getData(url, displayCart);
+	var obj = {id: num};
+	console.log(obj);
+  // var url = 'http://localhost:8080/MetaClothingJava/rest/cart/' + num;
+  verbData('POST', 'getUserCart', displayCart, obj);
 };
 
 function displayCart(cart) {

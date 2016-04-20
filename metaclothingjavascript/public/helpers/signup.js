@@ -46,7 +46,7 @@ onload = function() {
           user.addresses = [address];
         }
         console.log(user);
-        verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/createUser', createSession, user, emailValidation);
+        verbData('POST', 'newSignup', createSession, user, emailValidation);
 
       });
     }

@@ -19,6 +19,8 @@
     "express-session": "^1.13.0",
     "forever": "^0.15.1",
     "handlebars": "^4.0.5",
+    "jquery": "^2.2.3",
+    "jsdom": "^8.4.0",
     "session": "^0.1.0"
   }
 }

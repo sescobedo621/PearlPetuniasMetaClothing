@@ -1,7 +1,8 @@
 var shoppingCart = [];
 onload = function() {
   getData('/setCookie', setCookie);
-  getData('http://localhost:8080/MetaClothingJava/rest/allItems', displayItems);
+  getData('allItems', displayItems);
+  // getData('http://localhost:8080/MetaClothingJava/rest/allItems', displayItems);
   if (document.getElementById('tyke')) {
     addBrandEventListeners();
   } else if (document.getElementById('Adult Female')) {
@@ -37,54 +38,54 @@ function setCookie(data) {
 
 function addBrandEventListeners() {
   document.getElementById("tyke").addEventListener('click', function(e) {
-    getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Tyke', displayItems);
+    getData('Tyke', displayItems);
   });
 
   document.getElementById("babyboo").addEventListener('click', function(e) {
-    getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Baby%20Boo', displayItems);
+    getData('BabyBoo', displayItems);
   });
 
   document.getElementById("bannanademocracy").addEventListener('click', function(e) {
-    getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Bannana%20Democracy', displayItems);
+    getData('Bannana', displayItems);
   });
 
   document.getElementById("roughrider").addEventListener('click', function(e) {
-    getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Rough%20Rider', displayItems);
+    getData('Rough', displayItems);
   });
 
   document.getElementById("carterclothing").addEventListener('click', function(e) {
-    getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Carter%20Clothing', displayItems);
+    getData('Carter', displayItems);
   });
 
   document.getElementById("levimouse").addEventListener('click', function(e) {
-    getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Levi%20Mouse', displayItems);
+    getData('Levi', displayItems);
   });
 
   document.getElementById("mousesomething").addEventListener('click', function(e) {
-    getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Mouse%20Something', displayItems);
+    getData('Mouse', displayItems);
   });
 
   document.getElementById("straussfrock").addEventListener('click', function(e) {
-    getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Strauss%20Frock', displayItems);
+    getData('Strauss', displayItems);
   });
 
 }
 
 function addCategoryEventListeners() {
   document.getElementById("Adult Female").addEventListener('click', function(e) {
-    getData('http://localhost:8080/MetaClothingJava/rest/itemCat/Adult%20Female', displayItems);
+    getData('AdultF', displayItems);
   });
 
   document.getElementById("Jr Female").addEventListener('click', function(e) {
-    getData('http://localhost:8080/MetaClothingJava/rest/itemCat/Juvenile%20Female', displayItems);
+    getData('JuvF', displayItems);
   });
 
   document.getElementById("Adult Male").addEventListener('click', function(e) {
-    getData('http://localhost:8080/MetaClothingJava/rest/itemCat/Adult%20Male', displayItems);
+    getData('AdultM', displayItems);
   });
 
   document.getElementById("Jr Male").addEventListener('click', function(e) {
-    getData('http://localhost:8080/MetaClothingJava/rest/itemCat/Juvenile%20Male', displayItems);
+    getData('JuvM', displayItems);
   });
 
   // document.getElementById("Adult FemalePrice").addEventListener('click', function(e) {
@@ -160,7 +161,15 @@ function displayItems(itemList) {
           console.log(addCart.id);
           console.log(num);
           console.log(e.target.id);
-          getData('http://localhost:8080/MetaClothingJava/rest/addCart/' + e.target.id + '/' + num);
+          var obj = {
+            id: e.target.id,
+            userId: num
+          };
+          console.log(obj);
+          verbData('POST', 'updateCart',callback, obj);
+          function callback() {
+            console.log('callback placeholder');
+          }
         } else {
           shoppingCart.push(e.target.id);
           console.log("In else. shoppingCart.length: " + shoppingCart.length);
